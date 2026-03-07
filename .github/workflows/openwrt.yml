@@ -28,7 +28,7 @@ jobs:
         run: |
           cd openwrt/package
           git clone https://github.com/vernesong/OpenClash
-          git clone https://github.com/xiaorouji/openwrt-passwall2
+          git clone https://github.com/xiaorouji/openwrt-passwall
           git clone https://github.com/sbwml/luci-app-mosdns
           git clone https://github.com/fullcone-nat-nftables/nft-fullcone
 
