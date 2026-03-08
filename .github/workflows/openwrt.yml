@@ -1,4 +1,4 @@
-name: Build OpenWrt x64 Advanced
+name: Build OpenWrt x64 Stable
 
 on:
   workflow_dispatch:
@@ -26,7 +26,6 @@ jobs:
       - name: Clone OpenWrt
         run: |
           git clone --depth 1 https://github.com/openwrt/openwrt
-          cd openwrt
 
       - name: Add packages
         run: |
@@ -36,6 +35,7 @@ jobs:
           git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git
           git clone --depth 1 https://github.com/pymumu/luci-app-smartdns.git
           git clone --depth 1 https://github.com/pymumu/smartdns.git
+          git clone --depth 1 https://github.com/sbwml/luci-app-mosdns.git
 
       - name: Update feeds
         run: |
@@ -60,11 +60,10 @@ jobs:
       - name: Compile firmware
         run: |
           cd openwrt
-          make defconfig
           make -j1 V=s
 
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
-          name: openwrt-x64-advanced
+          name: openwrt-x64-stable
           path: openwrt/bin/targets/x86/64
